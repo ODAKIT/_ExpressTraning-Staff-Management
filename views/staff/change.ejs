@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit form</title>
+    <%- include("../Layout/bootstrap.ejs")%>
+
+</head>
+<body>
+    <form action="/staffs/<%=staff.id%>" method="POST">
+        <tr id = "title" class="d-flex flex-column">
+            <th> <div class="d-flex">
+                <p style="width: 50px; height: 30px; justify-content: center; align-items: center;">Name</p>
+                <input style="height: 30px;" type="text" value="<%=staff.name%>" name="name">
+            </div>
+            </th>
+            <th> <div class="d-flex">
+                <p style="width: 50px; height: 30px; justify-content: center; align-items: center;">Age</p>
+                <input style="height: 30px;" type="text" value="<%=staff.age%>" name="age">
+            </div>
+            </th>
+            <th> <div class="d-flex">
+                <p style="width: 50px; height: 30px; justify-content: center; align-items: center;">Work</p>
+                <input style="height: 30px;" type="text" value="<%=staff.work%>" name="work">
+            </div>
+            </th>
+        </tr>
+
+        <button class="btn btn-primary" style="color: rgb(255, 255, 255);">Submit</button>
+    </form>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../Layout/bootstrap.ejs")%>
+    <link rel="stylesheet" href="/css/staff.css">
+    <title>Staff</title>
+</head>
+<body>
+    <table id="listStaff">
+        <tr id = "title">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Work</th>
+        </tr>
+
+        <%  listStaff.forEach(element => { %>
+            <tr>
+                <th class="id"><%=element.id  %></th>
+                <th><%=element.name  %></th>
+                <th><%=element.age  %></th>
+                <th><%=element.work  %></th>
+                <th class = "controll">
+                   <a  href="/staffs/<%=element.id%>"">Change</a>
+                   <a  href="">Delete</a>
+                </th>
+            </tr>
+        <% }); %>
+        <tr>
+            <th style="text-align: center;"><a href="">+</a></th>
+        </tr>
+    </table>
+</body>
+</html>

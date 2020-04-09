@@ -1,0 +1,40 @@
+{
+  "listStaff": [
+    {
+      "id": "0",
+      "name": "Vo Minh Tan",
+      "age": "19",
+      "work": "12312312"
+    },
+    {
+      "id": "1",
+      "name": "Pham Hoang Long",
+      "age": 19,
+      "work": "Marketing"
+    },
+    {
+      "id": "2",
+      "name": "Pham Hoan Vu",
+      "age": 20,
+      "work": "HR"
+    },
+    {
+      "id": "3",
+      "name": "John Kelly",
+      "age": 22,
+      "work": "Back-end Golang Developer"
+    },
+    {
+      "id": "4",
+      "name": "Lulunely",
+      "age": 23,
+      "work": "Marketing"
+    },
+    {
+      "id": "5",
+      "name": "Pham Anh Huy",
+      "age": 24,
+      "work": "Font-end developer"
+    }
+  ]
+}

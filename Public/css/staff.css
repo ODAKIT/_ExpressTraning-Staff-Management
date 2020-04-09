@@ -1,0 +1,31 @@
+#listStaff{
+    width: 100%;
+}
+
+#listStaff tr:nth-child(even){background-color: #f2f2f2;}
+
+
+#listStaff th{
+    padding: 12px;
+    border: 1px solid black;
+}
+
+
+#title{
+    background-color: rgb(41, 202, 41);
+}
+
+.id{
+    width: 5%;
+}
+
+
+
+.controll{
+    text-align: center;
+    width: 10%;
+}
+
+.controll a{
+    padding: 10px;
+}
