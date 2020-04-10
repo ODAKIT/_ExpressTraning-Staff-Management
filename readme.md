@@ -1,7 +1,5 @@
 # Simple staff management
 
-A nice project with a nice description
-
 ---
 ## Requirements
 
