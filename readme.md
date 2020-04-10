@@ -41,24 +41,15 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 
 ---
 
-## Install
+## Run
 
-    $ git clone https://github.com/YOUR_USERNAME/PROJECT_TITLE
-    $ cd PROJECT_TITLE
-    $ yarn install
+    $ npm install
+    $ using node to build server
 
-## Configure app
+## Run
 
-Open `a/nice/path/to/a.file` then edit it with your settings. You will need:
+    $ Admin account : 
+    $ tanlalan123
+    $ 123456
+     
 
-- A setting;
-- Another setting;
-- One more setting;
-
-## Running the project
-
-    $ yarn start
-
-## Simple build for production
-
-    $ yarn build
