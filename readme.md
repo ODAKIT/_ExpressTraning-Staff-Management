@@ -46,7 +46,7 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
     $ npm install
     $ using node to build server
 
-## Run
+## Usage
 
     $ Admin account : 
     $ tanlalan123
