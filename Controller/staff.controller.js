@@ -10,14 +10,24 @@ module.exports.showListStaff = (req,res)=>{
 
 module.exports.post_newStaff = (req,res)=>{
     var myStaff = staffDB.get("listStaff");
-    console.log(req.body.name.length);
-    for(let i = 0 ; i<req.body.name.length ; i++){
+    console.log(req.body);
+    if( typeof req.body.name==='string'){
         myStaff.push({
             id : shortid.generate(),
-            name : req.body.name[i],
-            age  : req.body.age[i],
-            work : req.body.work[i]
+            name : req.body.name,
+            age  : req.body.age,
+            work : req.body.work
         }).write();
+    }
+    else{
+        for(let i = 0 ; i<req.body.name.length ; i++){
+            myStaff.push({
+                id : shortid.generate(),
+                name : req.body.name[i],
+                age  : req.body.age[i],
+                work : req.body.work[i]
+            }).write();
+        }
     }
     res.redirect("/staffs");
 }
