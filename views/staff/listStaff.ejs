@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,30 +8,52 @@
     <link rel="stylesheet" href="/css/staff.css">
     <title>Staff</title>
 </head>
+
 <body>
     <table id="listStaff">
-        <tr id = "title">
+        <tr id="title">
             <th>ID</th>
             <th>Name</th>
             <th>Age</th>
             <th>Work</th>
         </tr>
 
-        <%  listStaff.forEach(element => { %>
-            <tr>
-                <th class="id"><%=element.id  %></th>
-                <th><%=element.name  %></th>
-                <th><%=element.age  %></th>
-                <th><%=element.work  %></th>
-                <th class = "controll">
-                   <a  href="/staffs/<%=element.id%>"">Change</a>
-                   <a  href="">Delete</a>
-                </th>
-            </tr>
-        <% }); %>
+        <%  listStaff.forEach((element,index) => { %>
         <tr>
-            <th style="text-align: center;"><a href="">+</a></th>
+            <th class="id"><%=index %></th>
+            <th><%=element.name  %></th>
+            <th><%=element.age  %></th>
+            <th><%=element.work  %></th>
+            <th class="controll">
+                <form action="/staffs/<%=element.id%>" method="GET">
+                    <button class="btn btn-primary" style="width: 100px; margin-bottom: 20px;">Change</button>
+                </form>
+                <form action="/staffs/delete/<%=element.id%>" method="POST">
+                    <button class="btn btn-primary" style="width: 100px;">Delete</button>
+                </form>
+            </th>
         </tr>
+        <% }); %>
     </table>
+    <tr>
+        <th style="text-align: center; font-size: 20px;"><button class="btn btn-primary"
+                onclick="newElement()">+</button></th>
+
+        <th style="text-align: center; font-size: 20px;">
+            <form action="/staffs" id="formSubmit" class="d-inline" method="POST">
+                <button id="submitNewStaff"  class="btn btn-primary d-none">Submit All</button>
+            </form>
+        </th>
+    </tr>
+
+    <script>
+        function newElement() {
+            var node = document.createElement("tr");
+            node.innerHTML = `<%- include('../Layout/newStaff.ejs/')%>`;
+            document.getElementById("listStaff").appendChild(node);
+            document.getElementById("submitNewStaff").classList.remove("d-none");
+        }
+    </script>
 </body>
+
 </html>
