@@ -1,6 +1,7 @@
+<% let link = "name" %>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,41 +9,45 @@
     <link rel="stylesheet" href="/css/staff.css">
     <title>Staff</title>
 </head>
-
 <body>
-   <div class="container pt-5">
-    <table id="listStaff">
-        <tr id="title" class="bg-primary text-light">
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Work</th>
-        </tr>
+    <div class="container pt-5">
+        <form action="/staffs/search" method="GET" class="pb-5 d-flex">
+            <input  class="form-control"placeholder="Search" name="search">
+            <button class="btn btn-primary">Search</button>
 
-        <%  listStaff.forEach((element,index) => { %>
-        <tr>
-            <th class="id"><%=index %></th>
-            <th><%=element.name  %></th>
-            <th><%=element.age  %></th>
-            <th><%=element.work  %></th>
-            <th class="controll">
-                <form action="/staffs/<%=element.id%>" method="GET">
-                    <button class="btn btn-primary" style="width: 100px; margin-bottom: 20px;">Change</button>
-                </form>
-                <form action="/staffs/delete/<%=element.id%>" method="POST">
-                    <button class="btn btn-primary" style="width: 100px;">Delete</button>
-                </form>
-            </th>
-        </tr>
-        <% }); %>
-    </table>
-    <%if(typeof listError != "undefined"){%>
+    </form>
+        <table id="listStaff">
+            <tr id="title" class="bg-primary text-light">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Work</th>
+            </tr>
+
+            <%  listStaff.forEach((element,index) => { %>
+            <tr>
+                <th class="id"><%=index %></th>
+                <th><%=element.name  %></th>
+                <th><%=element.age  %></th>
+                <th><%=element.work  %></th>
+                <th class="controll">
+                    <form action="/staffs/<%=element.id%>" method="GET">
+                        <button class="btn btn-primary" style="width: 100px; margin-bottom: 20px;">Change</button>
+                    </form>
+                    <form action="/staffs/delete/<%=element.id%>" method="POST">
+                        <button class="btn btn-primary" style="width: 100px;">Delete</button>
+                    </form>
+                </th>
+            </tr>
+            <% }); %>
+        </table>
+        <%if(typeof listError != "undefined"){%>
         <%listError.forEach(element =>{ %>
-            <div class="alert alert-danger" role="alert">
-                    <%= element %> !
-            </div>
+        <div class="alert alert-danger" role="alert">
+            <%= element %> !
+        </div>
         <%})%>
-    <%}%>
+        <%}%>
     <tr >
         <th style="text-align: center; font-size: 20px;"><button class="btn btn-primary"
                 onclick="newElement()">+</button></th>
@@ -62,11 +67,11 @@
             document.getElementById("listStaff").appendChild(node);
             document.getElementById("submitNewStaff").classList.remove("d-none");
         }
-
-        "<%if(typeof listError != 'undefined'){%>"
-            newElement();
-        "<%}%>"
     </script>
+
+
+
+<%- include("../Layout/bootstrapJS")%>;
 </body>
 
 </html>

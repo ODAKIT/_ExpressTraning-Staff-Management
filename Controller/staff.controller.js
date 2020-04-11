@@ -10,29 +10,7 @@ module.exports.showListStaff = (req, res) => {
 
 module.exports.post_newStaff = (req, res) => {
     var myStaff = staffDB.get("listStaff");
-    var allError = []; //list error to alert
-    var canSubmit = true;
-    if (!req.body.name) {
-        allError.push("Name is required");
-        canSubmit = false;
-    }
-    if (!req.body.age) {
-        allError.push("Age is required");
-        canSubmit = false;
-    }
-    if (!req.body.work) {
-        allError.push("Work is required");
-        canSubmit = false;
-    }
-
-    if(!canSubmit){
-        res.render("staff/listStaff.ejs",
-        { listStaff: staffDB.get("listStaff").value(),
-          listError : allError
-        });
-    }
-    else{
-        //check xem neu name chi la 1 string thi 1 staff moi , con neu name la 1 object thi hon 2 staff them vao
+        //check xem neu name chi la 1 string thi duy nhat 1 staff moi , con neu name la 1 object thi hon 2 staff them vao
         if (typeof req.body.name === 'string') {
             myStaff.push({
                 id: shortid.generate(),
@@ -53,10 +31,26 @@ module.exports.post_newStaff = (req, res) => {
             }
         }
         res.redirect("/staffs");
-    }
 
 }
 
+
+module.exports.search = (req,res)=>{
+    var searchRequire = req.query.search;
+
+    var staff = staffDB.get("listStaff").value();
+
+    var newStaffList = staff.filter(function(staff){
+        if(staff.name.toLowerCase().indexOf(searchRequire.toLowerCase())!== -1
+        || staff.age.toLowerCase().indexOf(searchRequire.toLowerCase())!=-1
+        || staff.work.toLowerCase().indexOf(searchRequire.toLowerCase())!=-1){
+            return true;
+        }
+    })
+
+    res.render("staff/listStaff.ejs",
+    { listStaff: newStaffList});
+}
 
 
 module.exports.change = (req, res) => {

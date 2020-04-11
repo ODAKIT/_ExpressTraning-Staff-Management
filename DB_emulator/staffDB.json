@@ -9,13 +9,13 @@
     {
       "id": "1",
       "name": "Pham Hoang Long",
-      "age": 19,
+      "age": "19",
       "work": "Marketing"
     },
     {
       "id": "3",
       "name": "John Kelly",
-      "age": 22,
+      "age": "22",
       "work": "Back-end Golang Developer"
     },
     {
@@ -35,6 +35,30 @@
       "name": "Pham Hoan Vu",
       "age": "20",
       "work": "HR"
+    },
+    {
+      "id": "Ko3qshybt",
+      "name": "Nguyen Van Minh",
+      "age": "30",
+      "work": "Project Manager"
+    },
+    {
+      "id": "QtNPCjRHNh",
+      "name": "Peter Pen",
+      "age": "26",
+      "work": "Talent Acquisition"
+    },
+    {
+      "id": "sFqwI3o1TG",
+      "name": "Ryan Terry",
+      "age": "23",
+      "work": "Font-end Developer"
+    },
+    {
+      "id": "P0oGbsOFC",
+      "name": "Vo Thao Nguyen",
+      "age": "25",
+      "work": " Human Resource Development"
     }
   ]
 }
