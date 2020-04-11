@@ -10,8 +10,9 @@
 </head>
 
 <body>
+   <div class="container pt-5">
     <table id="listStaff">
-        <tr id="title">
+        <tr id="title" class="bg-primary text-light">
             <th>ID</th>
             <th>Name</th>
             <th>Age</th>
@@ -35,7 +36,14 @@
         </tr>
         <% }); %>
     </table>
-    <tr>
+    <%if(typeof listError != "undefined"){%>
+        <%listError.forEach(element =>{ %>
+            <div class="alert alert-danger" role="alert">
+                    <%= element %> !
+            </div>
+        <%})%>
+    <%}%>
+    <tr >
         <th style="text-align: center; font-size: 20px;"><button class="btn btn-primary"
                 onclick="newElement()">+</button></th>
 
@@ -45,6 +53,7 @@
             </form>
         </th>
     </tr>
+   </div>
 
     <script>
         function newElement() {
@@ -53,6 +62,10 @@
             document.getElementById("listStaff").appendChild(node);
             document.getElementById("submitNewStaff").classList.remove("d-none");
         }
+
+        "<%if(typeof listError != 'undefined'){%>"
+            newElement();
+        "<%}%>"
     </script>
 </body>
 
