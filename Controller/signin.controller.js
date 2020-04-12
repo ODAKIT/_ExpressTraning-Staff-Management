@@ -6,17 +6,25 @@ module.exports.signIn = (req,res)=>{
 }
 
 module.exports.login = (req,res)=>{
-   var listAdmin = adminDB.get("admin").value();
+//    var listAdmin = adminDB.get("admin").value();
    var accept = false;
-   listAdmin.forEach(element => {
-       if(element.acc===req.body.Acc)
-            if(element.pass === req.body.Pass)
-                accept = true;
+   var admin = adminDB.get("admin").find({acc : req.body.Acc}).value();
+   if(!admin){
+    res.render("signin/signin",{
+        error : 'User does not exist',
+        values : req.body,
+    })
+    return;
+   }
 
-   });
+   if(admin.pass!==req.body.Pass){
+    res.render("signin/signin",{
+        error : 'Wrong password',
+        values : req.body,
+    })
+    return;
+   }
 
-  if(accept)
-   res.redirect("/staffs");
-   else
-   res.redirect("/");
+    res.cookie('userID',admin.id);
+    res.redirect("/staffs");
 }

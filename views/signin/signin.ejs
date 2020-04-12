@@ -8,16 +8,24 @@
 
 </head>
 <body>
+
+  <%if(typeof error!='undefined'){ %>
+    <div class="alert alert-danger" style="width: 300px;" role="alert">
+      <%= error%>
+    </div>
+  <% } %>
     
     <form action="/login" method = "POST">
-        <div class="form-group">
+      <h1 class="display-10">Login</h1>
+      <hr>
+      <div class="form-group">
           <label for="exampleInputEmail1">Account</label>
-          <input style="width: 300px;" class="form-control" name="Acc">
+          <input style="width: 300px;" class="form-control" name="Acc" value=<%= (typeof values)!='undefined' ? values.Acc : "" %>>
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
-          <input type="password" style="width: 300px;" name="Pass" class="form-control" id="Pass">
+          <input type="password" style="width: 300px;" name="Pass" class="form-control" id="Pass" value=<%= (typeof values)!='undefined' ? values.Pass : "" %>>
         </div>
         <div class="form-group form-check">
         </div>

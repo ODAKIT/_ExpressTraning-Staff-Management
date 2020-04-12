@@ -16,6 +16,7 @@ router.post("/",validation.post_newStaff_validation,controller.post_newStaff);
 router.get("/search",controller.search);
 
 router.get("/:id",controller.change);
+
 router.post("/:id",controller.post_change);
 
 router.post("/delete/:id",controller.post_delete);

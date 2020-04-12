@@ -7,9 +7,9 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-
 
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
-//set up db
-var db = require("./dbSetup");
 
 
 app.set('view engine', 'ejs')
@@ -21,8 +21,9 @@ app.use(express.static('Public'))
 
 var signInRoute = require("./Routes/signin.route");
 var staffRoute = require("./Routes/staff.route");
+var Authencation = require("./Validation/requireAuth.validation");
 //route singin
-app.use("/",signInRoute);
-app.use("/staffs",staffRoute);
+app.use("/", signInRoute);
+app.use("/staffs",Authencation.requireAuth,staffRoute);
 
 app.listen(port,{});
