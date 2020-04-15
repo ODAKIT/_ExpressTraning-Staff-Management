@@ -1,0 +1,15 @@
+.container-fluid{
+    display: flex;
+    flex-wrap: wrap;
+    width: 1200px;
+}
+
+.card{
+    padding: 15px;
+    border: none;
+}
+
+.card-text{
+    height: 6rem;
+    overflow: hidden;
+}

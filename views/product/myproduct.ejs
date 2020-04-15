@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <%- include("../Layout/bootstrap")%>
+    <link rel="stylesheet" href="css/product.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <% listProduct.forEach(product => { %>
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="<%=product.img%>" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><%= product.name%></h5>
+                    <p class="card-text"><%= product.des%></p>
+                    <a href="#" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        <% }); %>
+
+
+        <!-- Ý tưởng là thế này : 
+        - vì ta truyền href trực tiếp có query ? nên ta phải quy ước 2 đầu pre và next như code 
+        - Khi nhấn vào các trang phía sau thì tiếp tục nhảy tới , nhưng đối với các trang phía trước thì không
+        Vì như source thì +1 và +2 chỉ có thể tiếp tục tiến tới hỗ trợ cho next 
+        Còn khi muốn lùi về thì phải viết riêng scripts ở script check khi nào nhấn btn nào thì di chuyển lại thuộc tính 
+        - trang nào quá maxPage thì gán lại href ở scripts -->
+        <nav aria-label="Page navigation example" style=" width: 100%; display: flex;justify-content: center;">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" id="prePage" href="/product?page=<%=page-1>=1 ? page-1 : page%>">Previous</a></li>
+              <li class="page-item"><a class="page-link main" href="/product?page=<%=page <= maxPage ? page : ""%>"><%=page <= maxPage ? page : ""%></a></li>
+              <li class="page-item"><a class="page-link main" href="/product?page=<%=page+1 <= maxPage ? page+1 : ""%>"><%=page+1 <= maxPage ? page+1 : ""%></a></li>
+              <li class="page-item"><a class="page-link main" href="/product?page=<%=page+2 <= maxPage ? page+2 : ""%>"><%=page+2 <= maxPage ? page+2 : ""%></a></li>
+              <li class="page-item"><a class="page-link" id="nextPage" href="/product?page=<%=page+1<= maxPage ? page+1 : page%>">Next</a></li>
+            </ul>
+          </nav>
+    </div>
+
+
+    <%- include("../Layout/bootstrapJS")%>
+
+
+    <script>
+       
+        var allPage = document.getElementsByClassName("page-link main");
+
+        if("<%=page%>"==(allPage[0].textContent) && allPage[0].textContent!='1'){
+            allPage[2].href = allPage[1].href;
+            allPage[2].textContent = allPage[1].textContent;
+            allPage[1].href = allPage[0].href;
+            allPage[1].textContent = allPage[0].textContent;
+            allPage[0].href = "/product?page=<%=parseInt(page)-1%>";
+            allPage[0].textContent = "<%=parseInt(page)-1%>";
+        }
+
+        for(let i = 0 ; i<allPage.length ; i++){
+            if(allPage[i].getAttribute("href")==="/product?page="){
+                allPage[i].textContent="";
+                allPage[i].href="/product?page=<%=maxPage%>";
+            }
+        }
+        
+    </script>
+</body>
+
+</html>

@@ -10,11 +10,15 @@
     <title>Staff</title>
 </head>
 <body>
+    <nav style="float: right; padding: 10px; background-color: rgb(184, 181, 181);">
+        <%if(typeof curAdmin!='undefined'){%>
+            <%=curAdmin.acc%>
+        <%}%>
+    </nav>
     <div class="container pt-5">
         <form action="/staffs/search" method="GET" class="pb-5 d-flex">
             <input  class="form-control"placeholder="Search" name="search">
             <button class="btn btn-primary">Search</button>
-
     </form>
         <table id="listStaff">
             <tr id="title" class="bg-primary text-light">

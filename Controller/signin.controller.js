@@ -5,6 +5,19 @@ module.exports.signIn = (req,res)=>{
     res.render("signin/signin.ejs",{});
 }
 
+module.exports.checkSignIn = (req,res,next)=>{
+    var admin = adminDB.get("admin").find({id : req.cookies.userID}).value();
+
+    if(!admin){
+        next();
+    }
+    else{
+        res.redirect("/staffs");
+    }
+
+
+}
+
 module.exports.login = (req,res)=>{
 //    var listAdmin = adminDB.get("admin").value();
    var accept = false;
@@ -24,7 +37,9 @@ module.exports.login = (req,res)=>{
     })
     return;
    }
-
-    res.cookie('userID',admin.id);
+   res.locals.curAdmin = admin;
+    res.cookie('userID',admin.id,{
+        signed : true
+    });
     res.redirect("/staffs");
 }
