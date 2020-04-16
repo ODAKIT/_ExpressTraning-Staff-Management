@@ -23,6 +23,7 @@
         <table id="listStaff">
             <tr id="title" class="bg-primary text-light">
                 <th>ID</th>
+                <th>Avatar</th>
                 <th>Name</th>
                 <th>Age</th>
                 <th>Work</th>
@@ -31,6 +32,7 @@
             <%  listStaff.forEach((element,index) => { %>
             <tr>
                 <th class="id"><%=index %></th>
+                <th style="width: 10%;"><img src="<%=element.avatar%>" style="width: 100%;" alt=""></th>
                 <th><%=element.name  %></th>
                 <th><%=element.age  %></th>
                 <th><%=element.work  %></th>
@@ -57,7 +59,7 @@
                 onclick="newElement()">+</button></th>
 
         <th style="text-align: center; font-size: 20px;">
-            <form action="/staffs" id="formSubmit" class="d-inline" method="POST">
+            <form action="/staffs" id="formSubmit" class="d-inline" method="POST" enctype="multipart/form-data">
                 <button id="submitNewStaff"  class="btn btn-primary d-none">Submit All</button>
             </form>
         </th>

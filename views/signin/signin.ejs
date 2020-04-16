@@ -8,16 +8,15 @@
 
 </head>
 <body>
-
+  <h1 class="display-10">Login</h1>
+  <hr>
   <%if(typeof error!='undefined'){ %>
     <div class="alert alert-danger" style="width: 300px;" role="alert">
       <%= error%>
     </div>
   <% } %>
-    
-    <form action="/login" method = "POST">
-      <h1 class="display-10">Login</h1>
-      <hr>
+
+    <form action="/login" method = "POST" class="pl-2">
       <div class="form-group">
           <label for="exampleInputEmail1">Account</label>
           <input style="width: 300px;" class="form-control" name="Acc" value=<%= (typeof values)!='undefined' ? values.Acc : "" %>>

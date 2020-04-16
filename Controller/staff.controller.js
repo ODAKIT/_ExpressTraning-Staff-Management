@@ -1,6 +1,7 @@
 var db = require("../dbSetup");
 var staffDB = db.staffDB;
 var shortid = require('shortid');
+var fs = require('fs');
 
 
 module.exports.showListStaff = (req, res) => {
@@ -16,7 +17,8 @@ module.exports.post_newStaff = (req, res) => {
                 id: shortid.generate(),
                 name: req.body.name,
                 age: req.body.age,
-                work: req.body.work
+                work: req.body.work,
+                avatar : req.files[0] ? req.files[0].path.split("/").slice(1).join("/") : ""
             }).write();
 
         }
@@ -26,7 +28,8 @@ module.exports.post_newStaff = (req, res) => {
                     id: shortid.generate(),
                     name: req.body.name[i],
                     age: req.body.age[i],
-                    work: req.body.work[i]
+                    work: req.body.work[i],
+                    avatar : req.files[i] ? req.files[i].path.split("/").slice(1).join("/") : ""
                 }).write();
             }
         }
@@ -56,17 +59,20 @@ module.exports.search = (req,res)=>{
 module.exports.change = (req, res) => {
     var staffID = req.params.id;
     var staff = staffDB.get("listStaff").find({ id: staffID }).value();
+    console.log(staff);
     res.render("staff/change", { staff: staff });
 }
 
 
 module.exports.post_change = (req, res) => {
     var myDB = staffDB.get("listStaff");
-    myDB.find({ id: req.params.id }).assign(
+    var myStaff = myDB.find({ id: req.params.id });
+    myStaff.assign(
         {
             name: req.body.name,
             age: req.body.age,
             work: req.body.work,
+            avatar : req.file ? req.file.path.split("/").slice(1).join("/") : ""
         }).write();
     res.redirect("/staffs");
 }
@@ -74,6 +80,14 @@ module.exports.post_change = (req, res) => {
 
 module.exports.post_delete = (req, res) => {
     var myDB = staffDB.get("listStaff");
+
+    myStaff = myDB.find({id:req.params.id});
+    var oldPathAvatar = "Public/"+myStaff.value().avatar;
+    fs.unlink(oldPathAvatar, (err) => {
+        if (err) throw err;
+        console.log('File was deleted');
+      });
+
     myDB.remove({ id: req.params.id })
         .write();
 

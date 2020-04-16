@@ -8,8 +8,10 @@
 
 </head>
 <body>
-    <form action="/staffs/<%=staff.id%>" method="POST">
+    <form action="/staffs/<%=staff.id%>" method="POST" enctype="multipart/form-data">
         <tr id = "title" class="d-flex flex-column">
+            <th>
+                <img style="width: 128px;" src="../<%=staff.avatar%>" alt=""></th>
             <th> <div class="d-flex">
                 <p style="width: 50px; height: 30px; justify-content: center; align-items: center;">Name</p>
                 <input style="height: 30px;" type="text" value="<%=staff.name%>" name="name">
@@ -24,6 +26,10 @@
                 <p style="width: 50px; height: 30px; justify-content: center; align-items: center;">Work</p>
                 <input style="height: 30px;" type="text" value="<%=staff.work%>" name="work">
             </div>
+            </th>
+            <th>
+                <label for="myfile">Avatar:</label>
+                <input style="width: 100%;" type="file" id="myfile" name="avatar">
             </th>
         </tr>
 
