@@ -6,7 +6,7 @@ module.exports.signIn = (req,res)=>{
 }
 
 module.exports.checkSignIn = (req,res,next)=>{
-    var admin = adminDB.get("admin").find({id : req.cookies.userID}).value();
+    var admin = adminDB.get("admin").find({id : req.signedCookies.userID}).value();
 
     if(!admin){
         next();
@@ -15,8 +15,8 @@ module.exports.checkSignIn = (req,res,next)=>{
         res.redirect("/staffs");
     }
 
-
 }
+
 
 module.exports.login = (req,res)=>{
 //    var listAdmin = adminDB.get("admin").value();

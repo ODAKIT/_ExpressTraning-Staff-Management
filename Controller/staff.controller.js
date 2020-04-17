@@ -59,7 +59,6 @@ module.exports.search = (req,res)=>{
 module.exports.change = (req, res) => {
     var staffID = req.params.id;
     var staff = staffDB.get("listStaff").find({ id: staffID }).value();
-    console.log(staff);
     res.render("staff/change", { staff: staff });
 }
 

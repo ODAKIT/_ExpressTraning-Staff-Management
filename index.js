@@ -23,9 +23,12 @@ var signInRoute = require("./Routes/signin.route");
 var staffRoute = require("./Routes/staff.route");
 var product = require("./Routes/product.route")
 var Authencation = require("./Validation/requireAuth.validation");
+var SessionMiddleware = require("./MIddleware/session.middleware");
+var ListCart = require("./MIddleware/getListCart.middleware");
 //route singin
+app.use(SessionMiddleware);
 app.use("/", signInRoute);
 app.use("/staffs",Authencation.requireAuth,staffRoute);
-app.use("/product",Authencation.requireAuth,product);
+app.use("/product",Authencation.requireAuth,ListCart.getCurListCard,product);
 
 app.listen(port,{});``

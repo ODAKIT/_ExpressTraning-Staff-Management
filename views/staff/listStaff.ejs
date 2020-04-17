@@ -67,6 +67,7 @@
    </div>
 
     <script>
+        console.log("<%=curAdmin.acc%>")
         function newElement() {
             var node = document.createElement("tr");
             node.innerHTML = `<%- include('../Layout/newStaff.ejs/')%>`;

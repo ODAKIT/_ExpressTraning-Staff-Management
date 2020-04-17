@@ -4,55 +4,64 @@
       "id": "0",
       "name": "Vo Minh Tan",
       "age": "19",
-      "work": "Director"
+      "work": "Director",
+      "avatar": "upload/1d8461826901732a74a69f583c748975"
     },
     {
       "id": "1",
       "name": "Pham Hoang Long",
       "age": "19",
-      "work": "Marketing"
+      "work": "Marketing",
+      "avatar": "upload/79ac86beee71aad653b722c79dfcc7fd"
     },
     {
       "id": "3",
       "name": "John Kelly",
       "age": "22",
-      "work": "Back-end Golang Developer"
+      "work": "Back-end Golang Developer",
+      "avatar": "upload/6df9c1d6046822da4016f693059fd848"
     },
     {
       "id": "aQF4AwyDb",
       "name": "Lulunely",
       "age": "23",
-      "work": "Back-end Express Developer"
+      "work": "Back-end Express Developer",
+      "avatar": "upload/0a6734884ddc9301f675b0cdc4c22615"
     },
     {
       "id": "BKlmJ55VE1",
       "name": "Nguyet Viet Dung",
       "age": "24",
-      "work": "Font-end Developer"
+      "work": "Font-end Developer",
+      "avatar": "upload/4ca1422726169fc13c462503e1bd69a4"
     },
     {
       "id": "Ko3qshybt",
       "name": "Nguyen Van Minh",
       "age": "30",
-      "work": "Project Manager"
+      "work": "Project Manager",
+      "avatar": "upload/e351869453bc501ef68b6f153bd6c52c"
     },
     {
       "id": "QtNPCjRHNh",
       "name": "Peter Pen",
       "age": "26",
-      "work": "Talent Acquisition"
+      "work": "Talent Acquisition",
+      "avatar": "upload/1513ee35f88a45c345afefebc555c8a9"
     },
     {
       "id": "sFqwI3o1TG",
       "name": "Ryan Terry",
       "age": "23",
-      "work": "Font-end Developer"
+      "work": "Font-end Developer",
+      "avatar": "upload/5abf8b3114df00fef24ea9cdd3b283ce"
     },
     {
       "id": "P0oGbsOFC",
       "name": "Vo Thao Nguyen",
       "age": "25",
-      "work": " Human Resource Development"
+      "work": " Human Resource Development",
+      "avatar": "upload/def208b4ba94492f56647178fc311548"
     }
   ],
   "listProduct": []

@@ -7,17 +7,28 @@
     <title>Product</title>
     <%- include("../Layout/bootstrap")%>
     <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
+   <div class="container">
+    <div id="cart" >
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <div id="listCart">
+            <% mylistCart.forEach((element,index) => { %>
+                <p style="font-size: 15px;"><%=index+1%> . <%=element.product.name%> -  <%=element.item%></p>
+            <% }); %>
+        </div>
+    </div>
+   </div>
     <div class="container-fluid">
         <% listProduct.forEach(product => { %>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="<%=product.img%>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><%= product.name%></h5>
-                    <p class="card-text"><%= product.des%></p>
-                    <a href="#" class="btn btn-primary">More</a>
+                    <p class="card-text" ><%= product.des%></p>
+                    <a href="product/cart/<%=product.id%>" class="btn btn-primary">More</a>
                 </div>
             </div>
         <% }); %>
@@ -45,7 +56,7 @@
 
 
     <script>
-       
+
         var allPage = document.getElementsByClassName("page-link main");
 
         if("<%=page%>"==(allPage[0].textContent) && allPage[0].textContent!='1'){
@@ -64,6 +75,16 @@
             }
         }
         
+
+
+        // shopping cart
+        var cart = document.getElementById("cart");
+        var listCart = document.getElementById("listCart");
+        cart.addEventListener("click",function(){
+            listCart.classList.toggle("show");
+        })
+
+
     </script>
 </body>
 

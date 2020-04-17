@@ -16,7 +16,7 @@ adminDB.defaults({ admin: []})
   .write()
 staffDB.defaults({ listStaff: []})
   .write()
-productDB.defaults({ listProduct: []})
+productDB.defaults({ listProduct: []} , {session : []})
   .write()
 
 module.exports.adminDB = adminDB;
